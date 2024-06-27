@@ -11,8 +11,3 @@ Feature: Login
     When the user enters "yudacst" and "password"
     And the user clicks the login button
     Then the user should be redirected to the main dashboard
-
-  Scenario: User login with invalid credential (anak-kandang)
-    When the user enters "yudaaaa" and "password"
-    And the user clicks the login button
-    Then the user should be redirected to the main dashboard

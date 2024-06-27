@@ -1,6 +1,7 @@
 package org.example.anakKandang;
 
 
+import com.aventstack.extentreports.Status;
 import io.cucumber.java.After;
 import io.cucumber.java.en.*;
 import org.example.object.BaseUrl;
@@ -30,6 +31,7 @@ public class InputDataSteps {
             dashboardPage = new DashboardPage(driver);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             Hooks.loginTest.pass("Bima login");
+            Hooks.inputDataTest.log(Status.INFO,"Bima berada di Dasboard");
         }
         catch (Exception e){
             Hooks.loginTest.fail("login fail");
