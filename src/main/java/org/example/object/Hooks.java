@@ -16,6 +16,8 @@ public class Hooks {
     public static ExtentTest inputDataTest;
     public static ExtentTest inputPanenTest;
 
+    public static ExtentTest viewKandangTest;
+
     @BeforeAll
     public static void setUp() {
         extent = ExtentReportManager.getInstance();
@@ -28,6 +30,7 @@ public class Hooks {
         logoutTest = extent.createTest("Logout test");
         inputDataTest = extent.createTest("Input data test");
         inputPanenTest = extent.createTest("Input Panen test");
+        viewKandangTest = extent.createTest("View Kandang test");
     }
     public static WebDriver getDriver(){
         if (driver==null){
@@ -45,6 +48,7 @@ public class Hooks {
         logoutTest.log(Status.INFO, "Close Logout ");
         inputPanenTest.log(Status.INFO,"Close input panen");
         inputDataTest.log(Status.INFO,"Close input data");
+        viewKandangTest.log(Status.INFO,"Close view Kandang");
         extent.flush();
     }
 }

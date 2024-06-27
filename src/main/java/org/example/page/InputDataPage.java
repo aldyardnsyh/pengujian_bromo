@@ -25,7 +25,15 @@ public class InputDataPage {
     public void InputAyam(int ayamMati){
         driver.findElement(By.id("inputJumlah_Ayam_Mati")).sendKeys(String.valueOf(ayamMati));
     }
+
     public void simpanData(){
         driver.findElement(By.id("btnSimpanData")).click();
+    }
+    public boolean check(){
+        WebElement success = driver.findElement(By.xpath("/html/body/div[1]/div/div/main/div/div/div/div[2]"));
+        if (success == null){
+            return false;
+        }
+        return true;
     }
 }

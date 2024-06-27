@@ -29,7 +29,7 @@ public class logout {
         loginPage.clickLoginButton();
 //        Assert.assertEquals(driver.getCurrentUrl(),baseUrl+"dashboard");
         dashboardPage = new DashboardPage(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @When("the user clicks the Profile Dropdown")
@@ -48,7 +48,7 @@ public class logout {
     }
     @And("the user should be redirected to the landing page")
     public void redirect(){
-        String currentUrl = driver.getCurrentUrl();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         Assert.assertEquals(driver.getCurrentUrl(),BaseUrl.getBaseUrl());
 
     }

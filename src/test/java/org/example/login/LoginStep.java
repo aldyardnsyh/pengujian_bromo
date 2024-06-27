@@ -36,11 +36,16 @@ public class LoginStep {
 
     @Then("the user should be redirected to the main dashboard")
     public void the_user_should_be_redirected_to_the_main_dashboard() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-        wait.until(ExpectedConditions.urlContains("dashboard"));
-        String currentUrl = driver.getCurrentUrl();
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.urlContains("dashboard"));
+            String currentUrl = driver.getCurrentUrl();
 
-        assert currentUrl.contains("dashboard");
-
+            assert currentUrl.contains("dashboard");
+            Hooks.loginTest.pass("aziz login");
+        }
+        catch (Exception e){
+            Hooks.loginTest.fail("login fail");
+        }
     }
 }

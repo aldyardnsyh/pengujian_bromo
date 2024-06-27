@@ -2,6 +2,7 @@ package org.example.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class InputPanenPage {
     private WebDriver driver;
@@ -20,5 +21,12 @@ public class InputPanenPage {
     }
     public void simpanData(){
         driver.findElement(By.id("btnSimpanInputPanen")).click();
+    }
+    public boolean check(){
+        WebElement success = driver.findElement(By.xpath("/html/body/div[1]/div/div/main/div/div/div/div[2]"));
+        if (success == null){
+            return false;
+        }
+        return true;
     }
 }

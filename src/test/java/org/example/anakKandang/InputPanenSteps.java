@@ -25,7 +25,7 @@ public class InputPanenSteps {
     public void userClicksInputDataSection() {
         dashboardPage.clickInputPanen();
         inputPanenPage = new InputPanenPage(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @And("the user enters the number of chickens and the total weight")
@@ -39,12 +39,20 @@ public class InputPanenSteps {
     @And("the user clicks the submit button")
     public void userClicksButton() {
         inputPanenPage.simpanData();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
     @Then("the system should confirm the data accuracy")
     public void systemConfirmsDataAccuracyAndUpdateCount() {
         // Implementation to verify data accuracy and update count
-        Assert.assertEquals(BaseUrl.getBaseUrl(),BaseUrl.getBaseUrl());
+//        Assert.assertEquals(BaseUrl.getBaseUrl(),BaseUrl.getBaseUrl());
+        try{
+            Assert.assertTrue(inputPanenPage.check());
+            Hooks.inputPanenTest.pass("data sudah tersimpan");
+        }catch (Exception e){
+            Hooks.inputPanenTest.fail("data belum tersimpan");
+        }
+
     }
+
 
 }

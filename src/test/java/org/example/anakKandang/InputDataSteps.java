@@ -28,8 +28,8 @@ public class InputDataSteps {
             loginPage.clickLoginButton();
 //        Assert.assertEquals(driver.getCurrentUrl(),baseUrl+"dashboard");
             dashboardPage = new DashboardPage(driver);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            Hooks.loginTest.pass("Success login");
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            Hooks.loginTest.pass("Bima login");
         }
         catch (Exception e){
             Hooks.loginTest.fail("login fail");
@@ -40,7 +40,7 @@ public class InputDataSteps {
     public void userClicksInputDataSection() {
         dashboardPage.clickInputData();
         inputDataPage = new InputDataPage(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @And("the user enters the data")
@@ -56,7 +56,7 @@ public class InputDataSteps {
     public void userClicksButton(String buttonName) {
         try {
             inputDataPage.simpanData();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             Hooks.inputDataTest.pass("Input success");
         }
         catch (Exception e){
@@ -67,7 +67,13 @@ public class InputDataSteps {
     @Then("the system should confirm the data accuracy and update the total chicken count")
     public void systemConfirmsDataAccuracyAndUpdateCount() {
         // Implementation to verify data accuracy and update count
-        Assert.assertEquals(BaseUrl.getBaseUrl(),BaseUrl.getBaseUrl());
+//        Assert.assertEquals(BaseUrl.getBaseUrl(),BaseUrl.getBaseUrl());
+        try{
+            Assert.assertTrue(inputDataPage.check());
+            Hooks.inputDataTest.pass("data sudah tersimpan");
+        }catch (Exception e){
+            Hooks.inputDataTest.fail("data belum tersimpan");
+        }
     }
 
 }

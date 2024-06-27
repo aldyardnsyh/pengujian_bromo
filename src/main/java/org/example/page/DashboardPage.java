@@ -24,7 +24,7 @@ public class DashboardPage {
         inputPanenLink.click();
     }
     public void clickKandang(){
-        WebElement KandangLink = driver.findElement(By.id("sideBarKandang"));
+        WebElement KandangLink = driver.findElement(By.id("sidebarKandang"));
         KandangLink.click();
     }
     public void clickPanen(){
